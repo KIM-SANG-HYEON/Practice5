@@ -13,6 +13,7 @@
 
 
 			<div class="post-info-list-pannel">
+			<button onclick="location.href='./writeView'">게시판 작성</button>
 				<table>
 					<thead>
 						<tr>

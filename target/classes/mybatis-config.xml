@@ -8,7 +8,7 @@
 	
 	<typeAliases>
 		
-		<typeAlias type="com.topia.prac.dto.Board" alias="board"/>
+		<typeAlias type="com.oracle.prac.dto.Board" alias="board"/>
 		
 	</typeAliases>
 	

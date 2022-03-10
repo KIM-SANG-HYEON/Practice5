@@ -6,12 +6,9 @@
 	 <resultMap type="Board" id="board">
 		<result column="BOARD_CODE" property="boardCode"/>
 		<result column="BOARD_TITLE" property="boardTitle"/>
-		<result column="BOARAD_CTX" property="boardCtx"/>
+		<result column="BOARAD_CONTENT" property="boardContent"/>
 		<result column="BOARD_WRITER" property="boardWriter"/>
 		<result column="BOARD_REGDATE" property="boardRegdate"/>
-		<result column="BOARD_NEWDATE" property="boardNewdate"/>
-		<result column="BOARD_VIEW" property="boardView"/>
-		<result column="BOARD_TAG" property="boardTag"/>
 		<result column="DELGB" property="delGb"/>
 	</resultMap>
 
@@ -20,17 +17,17 @@
 	  		insert into board(
 	  		 board_code
 	  		,board_title
-	  		,board_ctx
+	  		,board_content
 	  		,board_writer
 	  		,board_regdate
-	  		,board_tag
+	  		
 	  		)values(
 	  		board_code_seq.nextval
 	  		,#{boardTitle}
-	  		,#{boardCtx}
+	  		,#{boardContent}
 	  		,#{boardWriter}
 	  		,sysdate
-	  		,#{boardTag}
+	  		
 	  		)
 	  </insert>
 
@@ -40,13 +37,12 @@
 	   <select id="BoardList" parameterType="board" resultType="board">
 			select board_code as boardCode
 	   			  ,board_title as boardTitle
-	   			  ,board_ctx as boardCtx
+	   			  ,board_content as boardContent
 	   			  ,board_writer as boardWriter
 	   			  ,board_regdate as boardRegDate
-	   			  ,board_tag as boardTag
+	   		
 	   		from board
-	   		where BOARD_TITLE like '%'||#{keyword}||'%'
-			or BOARD_WRITER like '%'||#{keyword}||'%'
+	   		order by board_code desc
 	   </select>		
 		
 		
