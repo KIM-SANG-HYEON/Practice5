@@ -10,4 +10,6 @@ public interface BoardService {
 
 	void boardInsert(Board board); //게시글 작성 
 
+	Board boardRead(Board board); //게시글 상세 
+
 }

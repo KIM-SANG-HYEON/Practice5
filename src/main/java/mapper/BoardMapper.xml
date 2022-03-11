@@ -47,19 +47,17 @@
 		
 		
 		
+		<!--게시판 조회 -->
+		<select id="BoardRead" parameterType="board" resultType="board">
+			select board_code as boardCode,
+				   board_title as boardTitle,
+				   board_content as boardContent,
+				   board_writer as boardWriter,
+				   board_regdate as boardRegdate
+			from board 
+			where board_code = #{boardCode}		   
 		
-		<!--게시판 조회  -->
-	   <select id="BoardRead" resultType="board" parameterType="board">
-		   		select board_code as boardCode
-		   			  ,board_title as boardTitle
-		   			  ,board_ctx as boardCtx
-		   			  ,board_writer as boardWriter
-		   			  ,board_regdate as boardRegdate
-		   			  ,board_tag as boardTag
-		   			 from board
-		   			 where board_code=#{boardCode} 
-	   
-	   </select>	
+		</select>
 	   
 	   <!--게시판 수정  -->
 		<update id="update" parameterType="board">

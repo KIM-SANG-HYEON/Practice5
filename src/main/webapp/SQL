@@ -1,0 +1,21 @@
+--------삭제---------
+DROP TABLE BOARD;
+
+
+-----------BOARD---------------
+CREATE TABLE "BOARD"(
+    "BOARD_CODE"  NUMBER(10)       NOT NULL, --게시판 코드 
+    "BOARD_TITLE"  VARCHAR2(500)       NULL,  --게시판 제목 
+    "BOARD_CONTENT"    VARCHAR2(1000)      NULL,     -- 게시판 내용 
+    "BOARD_WRITER"  VARCHAR2(100)       NULL,  --게시판 작성자 
+    "BOARD_REGDATE" DATE                 DEFAULT SYSDATE,  --게시판 작성일 
+--    "BOARD_NEWDATE" DATE               NULL,  --게시판 수정일 
+--    "BOARD_VIEW"   NUMBER(10)           NULL,  --게시판 조회수 
+--    "DELETE_AT" CHAR(1) DEFAULT 'N' NOT NULL,        -- 삭제여부 'Y'삭제 'N' 미용
+    PRIMARY KEY(BOARD_CODE)
+);
+
+---------SEQUENCE----------
+CREATE SEQUENCE BOARD_CODE_SEQ;
+
+commit;

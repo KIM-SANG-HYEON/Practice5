@@ -60,4 +60,20 @@ public class BoardController {
 		
 	}
 	
+	//게시글 상세 
+	@RequestMapping(value = "/read" , method = RequestMethod.GET)
+	public String read(Board board , Model model) {
+
+		
+		log.info("*****BoardController read Start.......******");
+
+		Board board2 = bs.boardRead(board);
+		log.info("****board2 ->"+board2.toString());
+		
+		model.addAttribute("read", board2);
+		
+		return "readView";
+		
+		
+	}
 }

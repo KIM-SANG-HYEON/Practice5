@@ -34,4 +34,13 @@ public class BoardDaoImpl {
 		
 	}
 
+	//게시글 상세 
+	public Board boardRead(Board board) {
+
+
+		System.out.println("BoardDaoImpl boardInsert Start......");
+		
+		return sqlsession.selectOne("BoardRead", board);
+	}
+
 }
