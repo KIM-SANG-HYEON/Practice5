@@ -47,4 +47,25 @@ public class BoardServiceImpl implements BoardService {
 		
 		return bd.boardRead(board);
 	}
+
+	//게시글 수정 
+	@Override
+	public void boardUpdate(Board board) {
+
+
+		System.out.println("BoardServiceImpl boardUpdate Start.......");
+		
+		bd.boardUpdate(board);
+		
+	}
+
+	//게시글 삭제
+	@Override
+	public void BoardDelete(Board board) {
+
+
+		System.out.println("BoardServiceImpl BoardDelete Start.......");
+		
+		bd.boardDelete(board);
+	}
 }

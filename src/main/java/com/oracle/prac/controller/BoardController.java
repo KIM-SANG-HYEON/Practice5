@@ -74,6 +74,47 @@ public class BoardController {
 		
 		return "readView";
 		
+	}
+	
+	//게시글 수정하는 페이지
+	@RequestMapping(value = "/updateView" , method = RequestMethod.GET)
+	public String updateView(Board board , Model model) {
+		
+		log.info("*****BoardController updateView Start.......******");
+		
+		Board board2 = bs.boardRead(board);
+		model.addAttribute("update", board2);
+		
+		return "updateView";
+
+	}
+	//게시글 수정	
+	@RequestMapping(value = "/update" , method = RequestMethod.POST)
+	public String update(Board board) {
+		
+		log.info("*****BoardController updateView Start.......******");
+		
+		bs.boardUpdate(board);
+		
+		System.out.println("Board 값 넘어오는지 확인 --->" + board.getBoardContent());
+		System.out.println("Board 값 넘어오는지 확인 --->" + board.getBoardTitle());
+		
+		
+		return "redirect:/list";
 		
 	}
+	
+	//게시판 삭제 
+	@RequestMapping(value = "/delete" , method = RequestMethod.POST)
+	public String delete(Board board) {
+		
+		
+		log.info("*****BoardController delete Start.......******");
+		
+		bs.BoardDelete(board);
+		
+		return "redirect:/list";
+	}
+		
+	
 }

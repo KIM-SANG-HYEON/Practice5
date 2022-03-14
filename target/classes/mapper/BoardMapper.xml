@@ -9,7 +9,7 @@
 		<result column="BOARAD_CONTENT" property="boardContent"/>
 		<result column="BOARD_WRITER" property="boardWriter"/>
 		<result column="BOARD_REGDATE" property="boardRegdate"/>
-		<result column="DELGB" property="delGb"/>
+		
 	</resultMap>
 
 		<!--게시판 작성  -->
@@ -60,18 +60,21 @@
 		</select>
 	   
 	   <!--게시판 수정  -->
-		<update id="update" parameterType="board">
+		<update id="BoardUpdate" parameterType="board">
 				UPDATE BOARD 
 					SET BOARD_WRITER = #{boardWriter},
 						BOARD_TITLE = #{boardTitle},
-						BOARD_CTX = #{boardCtx}
+						BOARD_CONTENT = #{boardContent}
 				WHERE BOARD_CODE = #{boardCode}		 
 		
 		</update>	  
 		
 		<!--게시판 삭제   -->
-		<delete id="BoardDelete" parameterType="int">
-			
+		<delete id="BoardDelete" parameterType="board">
+				DELETE
+				FROM BOARD
+				WHERE BOARD_CODE = #{boardCode}
+				
 		</delete> 
 	   
 	   

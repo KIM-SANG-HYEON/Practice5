@@ -12,4 +12,8 @@ public interface BoardService {
 
 	Board boardRead(Board board); //게시글 상세 
 
+	void boardUpdate(Board board); //게시글 수정 
+
+	void BoardDelete(Board board); //게시글 삭제
+
 }

@@ -43,4 +43,23 @@ public class BoardDaoImpl {
 		return sqlsession.selectOne("BoardRead", board);
 	}
 
+	//게시글 수정 
+	public void boardUpdate(Board board) {
+		
+		System.out.println("BoardDaoImpl boardUpdate Start......");
+		
+		sqlsession.update("BoardUpdate",board);
+		
+	}
+
+	//게시글 삭제
+	public void boardDelete(Board board) {
+
+
+		System.out.println("BoardDaoImpl boardDelete Start......");
+		
+		sqlsession.delete("BoardDelete", board);
+		
+	}
+
 }
