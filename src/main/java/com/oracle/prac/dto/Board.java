@@ -15,6 +15,15 @@ public class Board {
 	private String boardWriter; //게시판 작성자 
 	private String boardRegdate; //게시판 작성날짜
 	
+	
+	// 조회용 
+	private int pageNum;
+	private int start;
+	private int end;
+	
+	// 검색용
+	private String keyword;
+	
 	public String getBoardCode() {
 		return boardCode;
 	}
@@ -44,6 +53,30 @@ public class Board {
 	}
 	public void setBoardRegdate(String boardRegdate) {
 		this.boardRegdate = boardRegdate;
+	}
+	public int getPageNum() {
+		return pageNum;
+	}
+	public void setPageNum(int pageNum) {
+		this.pageNum = pageNum;
+	}
+	public int getStart() {
+		return start;
+	}
+	public void setStart(int start) {
+		this.start = start;
+	}
+	public int getEnd() {
+		return end;
+	}
+	public void setEnd(int end) {
+		this.end = end;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 	
 	

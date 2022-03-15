@@ -62,4 +62,16 @@ public class BoardDaoImpl {
 		
 	}
 
+	//paging
+	public int listTotal(Board board) {
+
+
+		System.out.println("BoardDaoImpl listTotal Start......");
+		
+		int total = 0;
+		total = sqlsession.selectOne("ListTotal", board);
+		
+		return total;
+	}
+
 }

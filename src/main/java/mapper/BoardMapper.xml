@@ -35,16 +35,31 @@
 		<!--게시판 목록  -->
 		<!-- 값이 안나올때는 as 별칭 생성해주기 -->
 	   <select id="BoardList" parameterType="board" resultType="board">
-			select board_code as boardCode
+			select * from 
+				(select rownum as rn, a. *from
+					(select board_code as boardCode
 	   			  ,board_title as boardTitle
 	   			  ,board_content as boardContent
 	   			  ,board_writer as boardWriter
 	   			  ,board_regdate as boardRegDate
-	   		
-	   		from board
-	   		order by board_code desc
+	   			from board
+	   			where board_title like '%'||#{keyword}||'%'
+	   			or board_writer like '%'||#{keyword}||'%'
+	   			or board_content like '%'||#{keyword}||'%'
+	   			
+	   			order by board_code desc
+				) a )
+				where rn between #{start} and #{end}
+				
 	   </select>		
 		
+	 <select id="ListTotal"  parameterType="board"  resultType="int">
+				select count(*) 
+				from board 					
+				where  board_title like '%'||#{keyword}||'%'
+					or board_writer like '%'||#{keyword}||'%'
+					or board_content like '%'||#{keyword}||'%'
+	   </select>	
 		
 		
 		<!--게시판 조회 -->

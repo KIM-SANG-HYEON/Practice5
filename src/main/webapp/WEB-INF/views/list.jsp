@@ -14,6 +14,16 @@
 
 			<div class="post-info-list-pannel">
 			<button onclick="location.href='./writeView'">게시판 작성</button>
+				<div class="search">
+					  <form action="./list">
+						<select name="searchType">
+						<option value="boardTitle" <c:if test = "${searchType eq 'boardTitle'}">selected</c:if>>제목</option>
+						<option value="boardContent" <c:if test = "${searchType eq 'boardContent'}">selected</c:if>>내용</option>
+						</select>
+						<input type="text" id="keyword" name="keyword" value="${keyword}"placeholder="내용 또는 제목으로 검색">
+						<input type="submit" value="검색" >
+					  </form>
+				</div>
 				<table>
 					<thead>
 						<tr>
@@ -39,6 +49,21 @@
 						</tr>
 					</tbody>
 				</table>
+					<div class="paging-container">
+				<div class="paging">
+					<c:if test="${pg.startPage > pg.pageBlock }">
+						<a href="./list?currentPage1=${pg.startPage-pg.pageBlock}${pg.searchTypeKeyword}">이전</a>
+					</c:if>
+					
+					<c:forEach var="i" begin="${pg.startPage}" end="${pg.endPage}">
+						<a href="./list?currentPage1=${i}">[${i}]</a>
+					</c:forEach>
+					
+					<c:if test="${pg.endPage < pg.totalPage}">
+						<a href="./list?currentPage1=${pg.startPage + pg.pageBlock}${pg.searchTypeKeyword}">다음</a>
+					</c:if>
+			 	</div>
+		  </div>
 		
 			</div>
 </body>

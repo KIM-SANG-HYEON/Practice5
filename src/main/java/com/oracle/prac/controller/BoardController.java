@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.oracle.prac.dto.Board;
+import com.oracle.prac.dto.Paging;
 import com.oracle.prac.service.BoardService;
 
 @Controller
@@ -26,9 +28,25 @@ public class BoardController {
 	
 	//화면 목록 
 	@RequestMapping(value = "/list" , method = RequestMethod.GET)
-	public String list(Board board , Model model) {
+	public String list(Board board , Model model , String currentPage1 , 
+			@RequestParam(value = "searchType" , required = false , defaultValue = "boardTitle") String searchType,
+			@RequestParam(value = "keyword" , required = false , defaultValue = "") String keyword) {
 		
+	
 		log.info("*******BoardController list Start ********");
+		
+		
+		int total = 0;
+		total = bs.listTotal(board);
+		System.out.println("total -->" + total);
+		
+		Paging pg = new Paging(total , currentPage1);
+		board.setStart(pg.getStart());
+		board.setEnd(pg.getEnd());
+		pg.setSearchTypeKeyword(searchType, keyword); //검색 타입과 검색어 
+		System.out.println("Start --->" + board.getStart());
+		System.out.println("end--->" + board.getEnd());
+		
 		
 		
 		List<Board> list = bs.list(board);  

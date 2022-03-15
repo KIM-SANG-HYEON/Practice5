@@ -68,4 +68,13 @@ public class BoardServiceImpl implements BoardService {
 		
 		bd.boardDelete(board);
 	}
+
+	//paging
+	@Override
+	public int listTotal(Board board) {
+		
+		System.out.println("BoardServicImple listTotal Start...");
+		
+		return bd.listTotal(board);
+	}
 }

@@ -16,4 +16,6 @@ public interface BoardService {
 
 	void BoardDelete(Board board); //게시글 삭제
 
+	int listTotal(Board board); //paging
+
 }
